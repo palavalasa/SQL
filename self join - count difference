@@ -1,1 +1,7 @@
 
+select distinct
+(select count(CITY) as N from station T1) Ncount,
+(select count(distinct CITY) as M from station T1) Mcount,
+((select count(CITY) as N from station T1)-(select count(distinct CITY) as M from station T1)) as NminusM
+from station as N LEFT OUTER JOIN station as M
+ON N.ID=M.ID
